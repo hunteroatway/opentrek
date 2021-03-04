@@ -37,3 +37,4 @@
 /Users/hunter/dev/projects/opentrek/obj/Debug/net5.0/opentrek.pdb
 /Users/hunter/dev/projects/opentrek/obj/Debug/net5.0/opentrek.genruntimeconfig.cache
 /Users/hunter/dev/projects/opentrek/obj/Debug/net5.0/opentrek.csproj.CopyComplete
+/Users/hunter/dev/projects/opentrek/obj/Debug/net5.0/Razor/Views/Map/Index.cshtml.g.cs
