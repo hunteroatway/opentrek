@@ -15,13 +15,30 @@ marker_el.style.backgroundImage = 'url(https://maps.locationiq.com/v3/samples/ma
 marker_el.style.width = '50px';
 marker_el.style.height = '50px';
 
-// listen for clicks on the map object
-map.on('click', function(e) {
-  // define a new mapboxgl marker object, set the position and add it to the map object
-  var marker = new mapboxgl.Marker(marker_el).setLngLat(e.lngLat.wrap()).addTo(map);
+// define a new mapboxgl marker object, set the position and add it to the map object
+var marker = new mapboxgl.Marker({
+  element: marker_el,
+  draggable: true
+}).setLngLat([0, 0]).addTo(map);
 
+function updateMarkerPos(e) {
+  // update position of marker on map to current event lat and lng values
+  marker = new mapboxgl.Marker({
+    element: marker_el,
+    draggable: true
+  }).setLngLat(e.lngLat.wrap()).addTo(map);
+
+  getLatLng();
+}
+
+// get the lat and lng at the end of a drag event
+function getLatLng() {
   // get the markers lat, lng coordinates and update the pre-defined dom object to display it to the user
   var lngLat = marker.getLngLat();
   coordinates.style.display = 'block';
   coordinates.innerHTML = 'Latitude: ' + lngLat.lat + '<br />Longitude: ' + lngLat.lng;
-});
+}
+
+// setup event listeners for map and marker
+map.on('click', updateMarkerPos);
+marker.on('dragend', getLatLng);
