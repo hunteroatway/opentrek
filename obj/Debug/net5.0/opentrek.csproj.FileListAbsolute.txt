@@ -190,3 +190,10 @@ C:\Users\ASUS\source\repos\opentrek\obj\Debug\net5.0\Razor\Views\Location\Delete
 C:\Users\ASUS\source\repos\opentrek\obj\Debug\net5.0\Razor\Views\Location\Details.cshtml.g.cs
 C:\Users\ASUS\source\repos\opentrek\obj\Debug\net5.0\Razor\Views\Location\Edit.cshtml.g.cs
 C:\Users\ASUS\source\repos\opentrek\obj\Debug\net5.0\Razor\Views\Location\Index.cshtml.g.cs
+C:\Users\ASUS\source\repos\opentrek\bin\Debug\net5.0\System.Web.Mvc.dll
+C:\Users\ASUS\source\repos\opentrek\bin\Debug\net5.0\System.Web.Razor.dll
+C:\Users\ASUS\source\repos\opentrek\bin\Debug\net5.0\System.Web.Helpers.dll
+C:\Users\ASUS\source\repos\opentrek\bin\Debug\net5.0\System.Web.WebPages.Deployment.dll
+C:\Users\ASUS\source\repos\opentrek\bin\Debug\net5.0\System.Web.WebPages.Razor.dll
+C:\Users\ASUS\source\repos\opentrek\bin\Debug\net5.0\System.Web.WebPages.dll
+C:\Users\ASUS\source\repos\opentrek\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll

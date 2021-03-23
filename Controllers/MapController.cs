@@ -15,6 +15,7 @@ namespace opentrek.Controllers
     {
         private readonly ILogger<MapController> _logger;
         private readonly OpenTrekContext _context;
+        public LocationModel location = new LocationModel();
 
         public MapController(ILogger<MapController> logger, OpenTrekContext context)
         {
@@ -22,14 +23,26 @@ namespace opentrek.Controllers
             _context = context;
         }
 
-        public ActionResult Index(string country)
+        public ActionResult Index()
         {
-            LocationModel location = _context.Locations.Where(x => x.Country == country).FirstOrDefault();
-            
-            if (country != null)
-                Console.WriteLine(location.Recommendation);
+            /*
+             * Get the recommendation to update the model which will be passed to
+             * the view to be displayed on the index page.
+             */
+            GetRecommendation(null);
 
             return View(location);
+        }
+
+        public string GetRecommendation(string country)
+        {
+            /* 
+             * Search the database where the model and json provided country are the same
+             * then return the recommendation to the function.
+             */
+            if (country != null)
+                location = _context.Locations.Where(x => x.Country == country).FirstOrDefault();
+            return location.Recommendation;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

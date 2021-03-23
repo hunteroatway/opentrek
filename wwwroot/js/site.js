@@ -41,16 +41,20 @@ function getCountryFromLatLng() {
   // send http get request and parse json reponse to get the country
   req.onreadystatechange = function test() {
       if (this.readyState == 4 && this.status == 200) {
+          // parse json reponse data from the api call
           var json = JSON.parse(this.responseText);
-          console.log(json.address.country);
-          $.post({
+
+          // make a request to map controller to get the recommendation based on the country clicked on the map
+          $.ajax({
               type: 'GET',
-              url: 'Map',
+              url: 'Map/GetRecommendation',
               data: ({
                   country: json.address.country
               }),
-              success: function () {
-                  window.location.href = 'https://localhost:5001/Map?country=' + json.address.country;
+              success: function (res) {
+                  // on success of the map controller get call, update the country and recommendation DOM elements
+                  $("#country-text").text("Country: " + json.address.country);
+                  $("#recommendation-text").text("Recommendation: " + res);
               }
           });
     }
