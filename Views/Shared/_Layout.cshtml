@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - OpenTrek</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
     <link rel="stylesheet" href="~/css/site.css" />
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css' rel='stylesheet' />   
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 <body>
     <header>
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
         <h4 class="my-0 mr-md-auto font-weight-normal">OpenTrek</h4>
         <nav class="my-2 my-md-0 mr-md-3">
-            <a class="p-2 text-dark"asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            <a class="p-2 text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
             <a class="p-2 text-dark" asp-controller="Map" asp-action="Index">Map</a>
             <a class="p-2 text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </nav>
-        <a class="btn btn-outline-primary" asp-area="" asp-controller="Signup" asp-action="Index">Sign up</a>
+        <a class="btn btn-outline-primary" asp-area="" asp-controller="Account" asp-action="Index">Login</a>
         </div>
     </header>
     <div class="container">
@@ -25,7 +27,6 @@
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - OpenTrek - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

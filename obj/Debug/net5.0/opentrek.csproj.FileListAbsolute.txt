@@ -197,3 +197,5 @@ C:\Users\ASUS\source\repos\opentrek\bin\Debug\net5.0\System.Web.WebPages.Deploym
 C:\Users\ASUS\source\repos\opentrek\bin\Debug\net5.0\System.Web.WebPages.Razor.dll
 C:\Users\ASUS\source\repos\opentrek\bin\Debug\net5.0\System.Web.WebPages.dll
 C:\Users\ASUS\source\repos\opentrek\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
+C:\Users\ASUS\source\repos\opentrek\obj\Debug\net5.0\Razor\Views\Account\Index.cshtml.g.cs
+C:\Users\ASUS\source\repos\opentrek\obj\Debug\net5.0\Razor\Views\Account\Signup.cshtml.g.cs
