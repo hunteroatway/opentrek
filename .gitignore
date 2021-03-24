@@ -1,2 +1,4 @@
+*.sql
 *.vscode
 config.js
+appsettings.json

@@ -53,8 +53,8 @@ function getCountryFromLatLng() {
               }),
               success: function (res) {
                   // on success of the map controller get call, update the country and recommendation DOM elements
-                  $("#country-text").text("Country: " + json.address.country);
-                  $("#recommendation-text").text("Recommendation: " + res);
+                  $("#country-text").text(json.address.country);
+                  $("#recommendation-text").text(res);
               }
           });
     }
