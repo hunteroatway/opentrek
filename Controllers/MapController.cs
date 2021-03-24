@@ -15,7 +15,7 @@ namespace opentrek.Controllers
     {
         private readonly ILogger<MapController> _logger;
         private readonly OpenTrekContext _context;
-        public LocationModel location = new LocationModel();
+        private LocationModel _location = new LocationModel();
 
         public MapController(ILogger<MapController> logger, OpenTrekContext context)
         {
@@ -31,7 +31,7 @@ namespace opentrek.Controllers
              */
             GetRecommendation(null);
 
-            return View(location);
+            return View(_location);
         }
 
         public string GetRecommendation(string country)
@@ -41,8 +41,8 @@ namespace opentrek.Controllers
              * then return the recommendation to the function.
              */
             if (country != null)
-                location = _context.Locations.Where(x => x.Country == country).FirstOrDefault();
-            return location.Recommendation;
+                _location = _context.Locations.Where(x => x.Country == country).FirstOrDefault();
+            return _location.Recommendation;
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -13,5 +13,6 @@ namespace opentrek.Data
         {
         }
         public DbSet<LocationModel> Locations { get; set; }
+        public DbSet<UserModel> Users { get; set; }
     }
 }

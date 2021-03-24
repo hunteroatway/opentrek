@@ -1,4 +1,7 @@
-﻿// define map variable to hold the mapboxgl map object
+﻿/* Map View */
+/* **************************************************** */
+
+// define map variable to hold the mapboxgl map object
 // provide initial zoom level and starting position (lat, lng)
 var map = new mapboxgl.Map({
   container: 'map',
@@ -66,3 +69,5 @@ function getCountryFromLatLng() {
 // setup event listeners for map and marker
 map.on('click', addMarker);
 marker.on('dragend', addMarker);
+
+/* **************************************************** */
