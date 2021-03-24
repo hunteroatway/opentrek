@@ -24,7 +24,7 @@ namespace opentrek.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Login()
         {
             SetSessionString();
 
@@ -32,7 +32,7 @@ namespace opentrek.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(UserModel user)
+        public IActionResult Login(UserModel user)
         {
             if (user == null)
                 return NotFound();
@@ -44,8 +44,7 @@ namespace opentrek.Controllers
             HttpContext.Session.SetString(SessionKeyID, _user.Id.ToString());
             HttpContext.Session.SetString(SessionKeyName, _user.FirstName);
 
-
-            return Redirect("Home");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Signup()
@@ -63,7 +62,7 @@ namespace opentrek.Controllers
             {
                 _context.Add(user);
                 await _context.SaveChangesAsync();
-                return Redirect("Index");
+                return Redirect("Login");
             }
 
             return View(user);
@@ -74,10 +73,12 @@ namespace opentrek.Controllers
             if (HttpContext.Session.GetString("UserID") != null)
             {
                 ViewData["CookieName"] = "Welcome, " + HttpContext.Session.GetString("UserName");
+                ViewData["LoginButtonAction"] = "Logout";
             }
             else
             {
                 ViewData["CookieName"] = "";
+                ViewData["LoginButtonAction"] = "Login";
             }
         }
     }

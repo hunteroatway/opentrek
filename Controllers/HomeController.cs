@@ -44,10 +44,12 @@ namespace opentrek.Controllers
             if (HttpContext.Session.GetString("UserID") != null)
             {
                 ViewData["CookieName"] = "Welcome, " + HttpContext.Session.GetString("UserName");
+                ViewData["LoginButtonAction"] = "Logout";
             }
             else
             {
                 ViewData["CookieName"] = "";
+                ViewData["LoginButtonAction"] = "Login";
             }
         }
     }
