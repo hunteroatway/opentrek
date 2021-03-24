@@ -1,9 +1,9 @@
 @model opentrek.Models.LocationModel
+
 @{
     ViewData["Title"] = "Map Page";
 }
 
 <div id="map" style="height: 500px"></div>
-
 <h4>Country: </h4><p id="country-text">@Html.DisplayFor(model => model.Country)</p>
 <h4>Recommendation: </h4><p id ="recommendation-text">@Html.DisplayFor(model => model.Recommendation)</p>

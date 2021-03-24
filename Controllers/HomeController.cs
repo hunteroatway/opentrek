@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using opentrek.Models;
@@ -20,11 +21,15 @@ namespace opentrek.Controllers
 
         public IActionResult Index()
         {
+            SetSessionString();
+
             return View();
         }
 
         public IActionResult Privacy()
         {
+            SetSessionString();
+
             return View();
         }
 
@@ -32,6 +37,18 @@ namespace opentrek.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public void SetSessionString()
+        {
+            if (HttpContext.Session.GetString("UserID") != null)
+            {
+                ViewData["CookieName"] = "Welcome, " + HttpContext.Session.GetString("UserName");
+            }
+            else
+            {
+                ViewData["CookieName"] = "";
+            }
         }
     }
 }

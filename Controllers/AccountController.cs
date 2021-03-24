@@ -15,8 +15,8 @@ namespace opentrek.Controllers
         private readonly ILogger<AccountController> _logger;
         private readonly OpenTrekContext _context;
         private UserModel _user = new UserModel();
-        public const string SessionKeyName = "_Name";
-
+        public const string SessionKeyID = "UserID";
+        public const string SessionKeyName = "UserName";
 
         public AccountController(ILogger<AccountController> logger, OpenTrekContext context)
         {
@@ -26,6 +26,8 @@ namespace opentrek.Controllers
 
         public IActionResult Index()
         {
+            SetSessionString();
+
             return View();
         }
 
@@ -38,13 +40,18 @@ namespace opentrek.Controllers
             // Search the database to find the first user where the email and password match
             _user = _context.Users.Where(x => x.Email == user.Email && x.Password == user.Password).First();
 
-            HttpContext.Session.SetString(SessionKeyName, (_user.Id).ToString());
+            // Set session cookies
+            HttpContext.Session.SetString(SessionKeyID, _user.Id.ToString());
+            HttpContext.Session.SetString(SessionKeyName, _user.FirstName);
+
 
             return Redirect("Home");
         }
 
         public IActionResult Signup()
         {
+            SetSessionString();
+
             return View();
         }
 
@@ -60,6 +67,18 @@ namespace opentrek.Controllers
             }
 
             return View(user);
+        }
+
+        public void SetSessionString()
+        {
+            if (HttpContext.Session.GetString("UserID") != null)
+            {
+                ViewData["CookieName"] = "Welcome, " + HttpContext.Session.GetString("UserName");
+            }
+            else
+            {
+                ViewData["CookieName"] = "";
+            }
         }
     }
 }

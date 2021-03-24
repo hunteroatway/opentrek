@@ -8,11 +8,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using opentrek.Data;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.CookiePolicy;
+using opentrek.Data;
 
 namespace opentrek
 {
@@ -37,7 +34,7 @@ namespace opentrek
             services.AddSession(options =>
             {
                 options.Cookie.Name = ".opentrek.session";
-                options.IdleTimeout = TimeSpan.FromSeconds(10);
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
                 options.Cookie.IsEssential = true;
             });
         }
@@ -55,6 +52,7 @@ namespace opentrek
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using opentrek.Models;
 using opentrek.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace opentrek.Controllers
 {
@@ -30,6 +31,7 @@ namespace opentrek.Controllers
              * the view to be displayed on the index page.
              */
             GetRecommendation(null);
+            SetSessionString();
 
             return View(_location);
         }
@@ -41,7 +43,10 @@ namespace opentrek.Controllers
              * then return the recommendation to the function.
              */
             if (country != null)
+            {
                 _location = _context.Locations.Where(x => x.Country == country).FirstOrDefault();
+            }
+
             return _location.Recommendation;
         }
 
@@ -49,6 +54,18 @@ namespace opentrek.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public void SetSessionString()
+        {
+            if (HttpContext.Session.GetString("UserID") != null)
+            {
+                ViewData["CookieName"] = "Welcome, " + HttpContext.Session.GetString("UserName");
+            }
+            else
+            {
+                ViewData["CookieName"] = "";
+            }
         }
     }
 }
