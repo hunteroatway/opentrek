@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using opentrek.Data;
 using opentrek.Models;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
 
 namespace opentrek.Controllers
 {
@@ -14,6 +15,8 @@ namespace opentrek.Controllers
         private readonly ILogger<AccountController> _logger;
         private readonly OpenTrekContext _context;
         private UserModel _user = new UserModel();
+        public const string SessionKeyName = "_Name";
+
 
         public AccountController(ILogger<AccountController> logger, OpenTrekContext context)
         {
@@ -23,7 +26,7 @@ namespace opentrek.Controllers
 
         public IActionResult Index()
         {
-            return View(_user);
+            return View();
         }
 
         [HttpPost]
@@ -34,13 +37,29 @@ namespace opentrek.Controllers
 
             // Search the database to find the first user where the email and password match
             _user = _context.Users.Where(x => x.Email == user.Email && x.Password == user.Password).First();
- 
-            return View(_user);
+
+            HttpContext.Session.SetString(SessionKeyName, (_user.Id).ToString());
+
+            return Redirect("Home");
         }
 
         public IActionResult Signup()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Signup(UserModel user)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(user);
+                await _context.SaveChangesAsync();
+                return Redirect("Index");
+            }
+
+            return View(user);
         }
     }
 }
