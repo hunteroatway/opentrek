@@ -47,6 +47,14 @@ namespace opentrek.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove(SessionKeyID);
+            HttpContext.Session.Remove(SessionKeyName);
+
+            return RedirectToAction("Index", "Home");
+        }
+
         public IActionResult Signup()
         {
             SetSessionString();
