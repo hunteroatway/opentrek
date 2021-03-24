@@ -1,4 +1,6 @@
+*.vs
 *.sql
 *.vscode
 config.js
 *.json
+*/net5.0

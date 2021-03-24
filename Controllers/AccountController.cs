@@ -34,15 +34,8 @@ namespace opentrek.Controllers
 
             // Search the database to find the first user where the email and password match
             _user = _context.Users.Where(x => x.Email == user.Email && x.Password == user.Password).First();
-
-            return RedirectToAction("UpdateNavBarAfterSuccessfulLogin");
-        }
-
-        public IActionResult UpdateNavBarAfterSuccessfulLogin()
-        {
-
-
-            return Redirect("Home");
+ 
+            return View(_user);
         }
 
         public IActionResult Signup()
