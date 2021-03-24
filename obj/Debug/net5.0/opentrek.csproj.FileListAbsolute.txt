@@ -39,7 +39,6 @@
 /Users/hunter/dev/projects/opentrek/obj/Debug/net5.0/opentrek.csproj.CopyComplete
 /Users/hunter/dev/projects/opentrek/obj/Debug/net5.0/Razor/Views/Map/Index.cshtml.g.cs
 C:\Users\ASUS\Source\Repos\opentrek\bin\Debug\net5.0\appsettings.Development.json
-C:\Users\ASUS\Source\Repos\opentrek\bin\Debug\net5.0\appsettings.json
 C:\Users\ASUS\Source\Repos\opentrek\bin\Debug\net5.0\opentrek.exe
 C:\Users\ASUS\Source\Repos\opentrek\bin\Debug\net5.0\opentrek.deps.json
 C:\Users\ASUS\Source\Repos\opentrek\bin\Debug\net5.0\opentrek.runtimeconfig.json
@@ -199,3 +198,4 @@ C:\Users\ASUS\source\repos\opentrek\bin\Debug\net5.0\System.Web.WebPages.dll
 C:\Users\ASUS\source\repos\opentrek\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
 C:\Users\ASUS\source\repos\opentrek\obj\Debug\net5.0\Razor\Views\Account\Index.cshtml.g.cs
 C:\Users\ASUS\source\repos\opentrek\obj\Debug\net5.0\Razor\Views\Account\Signup.cshtml.g.cs
+C:\Users\ASUS\source\repos\opentrek\bin\Debug\net5.0\appsettings.json
