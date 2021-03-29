@@ -11,6 +11,21 @@ var map = new mapboxgl.Map({
   center: [0, 25.0]
 });
 
+// define map controls
+var nav = new mapboxgl.NavigationControl();
+map.addControl(nav, 'top-right');
+map.addControl(new mapboxgl.FullscreenControl());
+map.addControl(new mapboxgl.ScaleControl({
+    maxWidth: 80,
+    unit: 'metric'
+}));
+map.addControl(new mapboxgl.GeolocateControl({
+    positionOptions: {
+        enableHighAccuracy: true
+    },
+    trackUserLocation: true
+}));
+
 // create an element to hold the marker
 var marker;
 var marker_el = document.createElement('div');
