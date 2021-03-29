@@ -26,6 +26,11 @@ namespace opentrek.Controllers
 
         public ActionResult Index()
         {
+            if (HttpContext.Session.GetString("UserID") == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             /*
              * Get the recommendation to update the model which will be passed to
              * the view to be displayed on the index page.
