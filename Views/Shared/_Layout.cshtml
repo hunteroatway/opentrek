@@ -16,7 +16,6 @@
                 <span class="p-2 text-dark"><strong>@ViewData["CookieName"]</strong></span>
                 <a class="p-2 text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                 <a class="p-2 text-dark" asp-controller="Map" asp-action="Index">Map</a>
-                <a class="p-2 text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                 <a class="p-2 text-dark" asp-area="" asp-controller="Account" asp-action="Manage">Account</a>
             </nav>
             <a class="btn btn-outline-primary" asp-area="" asp-controller="Account" asp-action="@ViewData["LoginButtonAction"]">@ViewData["LoginButtonAction"]</a>
@@ -29,7 +28,7 @@
     </div>
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - OpenTrek - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - OpenTrek
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
