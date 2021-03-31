@@ -26,13 +26,6 @@ namespace opentrek.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            SetSessionString();
-
-            return View();
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

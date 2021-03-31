@@ -7,6 +7,7 @@ using opentrek.Data;
 using opentrek.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace opentrek.Controllers
 {
@@ -75,19 +76,25 @@ namespace opentrek.Controllers
 
             return View(user);
         }
-
+        
         public void SetSessionString()
         {
             if (HttpContext.Session.GetString("UserID") != null)
             {
                 ViewData["CookieName"] = "Welcome, " + HttpContext.Session.GetString("UserName");
                 ViewData["LoginButtonAction"] = "Logout";
+                ViewData["CurrentUser"] = HttpContext.Session.GetString("UserID");
             }
             else
             {
                 ViewData["CookieName"] = "";
                 ViewData["LoginButtonAction"] = "Login";
             }
+        }
+
+        private bool UserModelExists(int id)
+        {
+            return _context.Users.Any(e => e.Id == id);
         }
     }
 }
