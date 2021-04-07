@@ -4,20 +4,25 @@
     ViewData["Title"] = "Sign up";
 }
 
-@using (Html.BeginForm("Signup", "Account", FormMethod.Post))
+@using (Html.BeginForm("Signup", "Account", FormMethod.Post, new { @id = "signupForm", enctype = "multipart/form-data", onsubmit = "validateSignup(event)"}))
 {
     <img class="mb-4" src="~/assets/logo.PNG" alt="" width="75" height="75">
     <h1 class="h3 mb-3 font-weight-normal">Create an Account</h1>
     <label for="inputFirstName" class="sr-only">First Name</label>
-    <span>@Html.TextBoxFor(u => u.FirstName, "FirstName", new { @class = "form-control", placeholder = "First Name" })</span>
+    <span>@Html.TextBoxFor(u => u.FirstName, "FirstName", new { @class = "form-control", id = "signup-fname", placeholder = "First Name" })</span>
+    <p class="error_msg" id="signup-fname-msg"></p>
     <label for="inputLastName" class="sr-only">Last Name</label>
-    <span>@Html.TextBoxFor(u => u.LastName, "LastName", new { @class = "form-control", placeholder = "Last Name" })</span>
+    <span>@Html.TextBoxFor(u => u.LastName, "LastName", new { @class = "form-control", id = "signup-lname", placeholder = "Last Name" })</span>
+    <p class="error_msg" id="signup-lname-msg"></p>
     <label for="inputUsername" class="sr-only">Username</label>
-    <span>@Html.TextBoxFor(u => u.Username, "Username", new { @class = "form-control", placeholder = "Username" })</span>
+    <span>@Html.TextBoxFor(u => u.Username, "Username", new { @class = "form-control", id = "signup-uname", placeholder = "Username" })</span>
+    <p class="error_msg" id="signup-uname-msg"></p>
     <label for="inputEmail" class="sr-only">Email</label>
-    <span>@Html.TextBoxFor(u => u.Email, "Email", new { @class = "form-control", placeholder = "Email" })</span>
+    <span>@Html.TextBoxFor(u => u.Email, "Email", new { @class = "form-control", id = "signup-email", placeholder = "Email" })</span>
+    <p class="error_msg" id="signup-email-msg"></p>
     <label for="inputPassword" class="sr-only">Password</label>
-    <span>@Html.PasswordFor(u => u.Password, new { @class = "form-control", placeholder = "Password" })</span>
+    <span>@Html.PasswordFor(u => u.Password, new { @class = "form-control", id = "signup-password", placeholder = "Password" })</span>
+    <p class="error_msg" id="signup-password-msg"></p>
     <label>Already have an account?  <a asp-area="" asp-controller="Account" asp-action="Index">Login</a></label>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
     <p class="mt-5 mb-3 text-muted">&copy; OpenTrek 2021</p>

@@ -87,11 +87,10 @@ marker.on('dragend', addMarker);
 
 /* **************************************************** */
 
-function validate(event) {
+function validateLogin(event) {
   var res = true;
   var email = document.getElementById("login-email").value;
   var pwd = document.getElementById("login-password").value;
-
   
   var email_v = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   var pwd_v = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
@@ -111,9 +110,50 @@ function validate(event) {
 
   if (res == false)
     event.preventDefault();
-
-    console.log(email);
-    console.log(pwd);
-    console.log(res);
 }
 
+function validateSignup(event) {
+  var res = true;
+  var fname = document.getElementById("signup-fname").value;
+  var lname = document.getElementById("signup-lname").value;
+  var uname = document.getElementById("signup-uname").value;
+  var email = document.getElementById("signup-email").value;
+  var pwd = document.getElementById("signup-password").value;
+
+  var email_v = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  var pwd_v = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+  document.getElementById("signup-fname-msg").innerHTML = "";
+  document.getElementById("signup-lname-msg").innerHTML = "";
+  document.getElementById("signup-uname-msg").innerHTML = "";
+  document.getElementById("signup-email-msg").innerHTML = "";
+  document.getElementById("signup-password-msg").innerHTML = "";
+
+  if (fname == null || fname == "" || fname.length > 40) {
+    document.getElementById("signup-fname-msg").innerHTML = "Invalid First Name Format";
+    res = false;
+  }
+
+  if (lname == null || lname == "" || lname.length > 40) {
+    document.getElementById("signup-lname-msg").innerHTML = "Invalid Last Name Format";
+    res = false;
+  }
+
+  if (uname == null || uname == "" || uname.length > 40) {
+    document.getElementById("signup-uname-msg").innerHTML = "Invalid Username Format";
+    res = false;
+  }
+
+  if (email == null || email == "" || !email_v.test(email)) {
+    document.getElementById("signup-email-msg").innerHTML = "Invalid Email Format";
+    res = false;
+  }
+
+  if (pwd == null || pwd == "" || !pwd_v.test(pwd)) {
+    document.getElementById("signup-password-msg").innerHTML = "Invalid Password Format";
+    res = false;
+  }
+
+  if (res == false)
+  event.preventDefault();
+}
