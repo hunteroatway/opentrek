@@ -86,3 +86,34 @@ map.on('click', addMarker);
 marker.on('dragend', addMarker);
 
 /* **************************************************** */
+
+function validate(event) {
+  var res = true;
+  var email = document.getElementById("login-email").value;
+  var pwd = document.getElementById("login-password").value;
+
+  
+  var email_v = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  var pwd_v = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+  document.getElementById("login-email-msg").innerHTML = "";
+  document.getElementById("login-password-msg").innerHTML = "";
+
+  if (email == null || email == "" || !email_v.test(email)) {
+    document.getElementById("login-email-msg").innerHTML = "Invalid Email Format";
+    res = false;
+  }
+
+  if (pwd == null || pwd == "" || !pwd_v.test(pwd)) {
+    document.getElementById("login-password-msg").innerHTML = "Invalid Password Format\n";
+    res = false;
+  }
+
+  if (res == false)
+    event.preventDefault();
+
+    console.log(email);
+    console.log(pwd);
+    console.log(res);
+}
+

@@ -4,14 +4,16 @@
     ViewData["Title"] = "Login";
 }
 
-@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @id = "loginForm", enctype = "multipart/form-data", onsubmit = "validate(event)"}))
 {
     <img class="mb-4" src="~/assets/logo.PNG" alt="" width="75" height="75">
     <h1 class="h3 mb-3 font-weight-normal">Login</h1>
     <label for="inputEmail" class="sr-only">Email</label>
-    <span>@Html.TextBoxFor(u => u.Email, "Email", new { @class = "form-control", placeholder = "Email" })</span>
+    <span>@Html.TextBoxFor(u => u.Email, "Email", new { @class = "form-control", id = "login-email", placeholder = "Email" })</span>
+    <p class="error_msg" id="login-email-msg"></p>
     <label for="inputPassword" class="sr-only">Password</label>
-    <span>@Html.PasswordFor(u => u.Password, new { @class = "form-control", placeholder = "Password" })</span>
+    <span>@Html.PasswordFor(u => u.Password, new { @class = "form-control", id = "login-password", placeholder = "Password" })</span>
+    <p class="error_msg" id="login-password-msg"></p>
     <label>Don't have an account?  <a asp-area="" asp-controller="Account" asp-action="Signup">Create an Account</a></label>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
     <p class="mt-5 mb-3 text-muted">&copy; OpenTrek 2021</p>

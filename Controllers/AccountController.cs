@@ -36,10 +36,17 @@ namespace opentrek.Controllers
         public IActionResult Login(UserModel user)
         {
             if (user == null)
-                return NotFound();
+                return RedirectToAction("Login", "Account");
 
             // Search the database to find the first user where the email and password match
-            _user = _context.Users.Where(x => x.Email == user.Email && x.Password == user.Password).First();
+            try
+            {
+                _user = _context.Users.Where(x => x.Email == user.Email && x.Password == user.Password).First();
+            }
+            catch (InvalidOperationException)
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
             // Set session cookies
             HttpContext.Session.SetString(SessionKeyID, _user.Id.ToString());
